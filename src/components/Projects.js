@@ -28,7 +28,7 @@ const Projects = () => {
     {
       title: "Portfolio Website",
       image: "/assets/img/portofolio.png",
-      description: "Website portofolio pribadi dengan animasi dan tema gelap/terang."
+      description: "Website portofolio pribadi dengan animasi dan tema gelap/terang. Dibuat dengan menggunakan React & Tailwind CSS."
     },
     {
       title: "Sistem Informasi Management Rumah Sakit (SIMRS)",

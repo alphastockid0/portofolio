@@ -7,8 +7,8 @@ const Home = () => {
       className="min-h-screen bg-gray-100 dark:bg-gray-800 flex flex-col px-4 mt-12 justify-between"
       data-aos="fade-up"
     >
-      <div className="flex flex-col md:h-screen md:flex-row items-center justify-center gap-8">
-        <div className="md:w-1/2 flex flex-col justify-between md:h-screen text-center md:text-left md:py-20">
+      <div className="flex flex-col h-screen md:flex-row items-center justify-between py-6">
+        <div className="md:w-1/2 h-1/2 flex flex-col justify-between md:h-screen text-center md:text-left md:py-20">
           {/* TOP */}
           <h1 className="dark:text-white font-seasons text-4xl md:text-7xl font-bold leading-tight">
             Explore My Projects & Professional Journey
@@ -27,7 +27,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="md:w-1/2 flex flex-col items-center space-y-4 pt-2">
+        <div className="md:w-1/2 h-1/2 flex flex-col items-center space-y-4 pt-2">
           <img
             src="/assets/img/profile.jpg"
             alt="profile"

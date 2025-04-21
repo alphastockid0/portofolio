@@ -58,9 +58,15 @@ const Projects = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
   };
 
-  const visibleProjects = projects.slice(currentIndex, currentIndex + 3).concat(
-    projects.slice(0, Math.max(0, currentIndex + 3 - projects.length))
-  );
+  const getVisibleProjects = () => {
+    const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
+    const numVisible = screenWidth < 768 ? 1 : 3;
+    return projects.slice(currentIndex, currentIndex + numVisible).concat(
+      projects.slice(0, Math.max(0, currentIndex + numVisible - projects.length))
+    );
+  };
+
+  const visibleProjects = getVisibleProjects();
 
   return (
     <section id="projects" className="min-h-screen bg-gray-100 dark:bg-gray-800 px-4 pt-10" data-aos="fade-up">
@@ -102,7 +108,7 @@ const Projects = () => {
               <img src={modalData.image} alt={modalData.title} className="w-full h-auto rounded-md object-cover" />
             </div>
             <div className="flex-1">
-              <h3 className="text-2xl font-bold mb-4 dark:text-white">{modalData.title}</h3>
+              <h3 className="text-sm md:text-2xl font-bold mb-4 dark:text-white">{modalData.title}</h3>
               <p className="dark:text-gray-300 mb-6">{modalData.description}</p>
               <button
                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"

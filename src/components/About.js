@@ -14,8 +14,8 @@ const About = () => {
         </div>
 
         {/* Kanan */}
-        <div className="md:w-1/2 w-screen md:h-screen flex flex-col border-b-2 justify-center items-center dark:text-white bg-gray-100 dark:bg-gray-800 space-y-4">
-          <h1 className="font-seasons text-center md:text-6xl text-2xl px-3 py-5">
+        <div className="md:w-1/2 w-screen h-screen flex flex-col border-b-2 justify-center items-center dark:text-white bg-gray-100 dark:bg-gray-800 space-y-4">
+          <h1 className="font-seasons text-center md:text-6xl text-6xl px-3 py-5">
             " This journey is not about being the fastest, but about continuing to develop, learn and grow "
           </h1>
         </div>

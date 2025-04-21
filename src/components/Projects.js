@@ -18,27 +18,43 @@ const Projects = () => {
     {
       title: "Teknisi Elektronik, CCTV, PABX, Komputer Jaringan",
       image: "/assets/img/Service-HP.png",
-      description: "Menjadi seorang Professional dalam beberapa bidang adalah pengalaman yang mengesankan. Pekerjaan saya sebagai teknisi handphone , dilain waktu saya bisa melakukan pekerjaan instalasi jaringan CCTV / PABX / Jaringan Komputer di beberapa instansi seperti Rumah Sakit, Perkantoran, Perumahan dan Stasiun Pengisian Bahan Bakar."
+      description: "Menjadi seorang Professional dalam beberapa bidang adalah pengalaman yang mengesankan. Pekerjaan saya sebagai teknisi handphone , dilain waktu saya bisa melakukan pekerjaan instalasi jaringan CCTV / PABX / Jaringan Komputer di beberapa instansi seperti Rumah Sakit, Perkantoran, Perumahan dan Stasiun Pengisian Bahan Bakar.",
+      fp: [{
+        title: "Jual Beli HP Rusak",
+        url: "https://www.facebook.com/profile.php?id=100063816554456"
+      },]
     },
     {
       title: "Digital Scoring Pertandingan Pencak Silat",
       image: "/assets/img/sc-pencak.png",
-      description: "Aplikasi Berbasis Website yang dibangun dengan PHP dan framework Codeigniter 4. Aplikasi ini bertujuan agar pertandingan / event berjalan secara efisien dan terbuka. Dimana seluruh penonton dapat melihat secara langsung ketika juri memberikan nilai atlet saat pertandingan berlangsung. Selain itu semua sistem pertandingan sudah melalui aplikasi mulai dari pendaftaran hingga keputusan pemenang."
+      description: "Aplikasi Berbasis Website yang dibangun dengan PHP dan framework Codeigniter 4. Aplikasi ini bertujuan agar pertandingan / event berjalan secara efisien dan terbuka. Dimana seluruh penonton dapat melihat secara langsung ketika juri memberikan nilai atlet saat pertandingan berlangsung. Selain itu semua sistem pertandingan sudah melalui aplikasi mulai dari pendaftaran hingga keputusan pemenang.",
+      fp: ""
     },
     {
       title: "Portfolio Website",
       image: "/assets/img/portofolio.png",
-      description: "Website portofolio pribadi dengan animasi dan tema gelap/terang. Dibuat dengan menggunakan React & Tailwind CSS."
+      description: "Website portofolio pribadi dengan animasi dan tema gelap/terang. Dibuat dengan menggunakan React & Tailwind CSS.",
+      fp: [
+        {
+          title: "WAHYU WIJAYA",
+          url: "https://www.facebook.com/wahyu.wijaya.7393264"
+        }
+      ]
     },
     {
       title: "Sistem Informasi Management Rumah Sakit (SIMRS)",
       image: "/assets/img/gladiool.png",
-      description: "Aplikasi Sistem Informasi yang dibangun dengan PHP Codeigniter 4 demi menunjang efisiensi management dalam instansi Rumah Sakit"
+      description: "Aplikasi Sistem Informasi yang dibangun dengan PHP Codeigniter 4 demi menunjang efisiensi management dalam instansi Rumah Sakit",
+      fp: ""
     },
     {
       title: "Teknisi Elektromedis Laboratorium",
       image: "/assets/img/lab.jpg",
-      description: "Saya pernah menjadi seorang Professional dalam dunia alat kesehatan khususnya alat Laboratorium. Disini saya bertanggungjawab untuk memperbaiki alat laboratorium yang rusak atau butuh perawatan. Setelah semua system mekanik telah bekerja dengan baik saya juga harus memastikan bahwa hasil baca dari alat telah akurat. Beberapa alat yang sering saya perbaiki yaitu Hematology Analyzer 3diff / 5diff, photometer, full auto kimia klinik."
+      description: "Saya pernah menjadi seorang Professional dalam dunia alat kesehatan khususnya alat Laboratorium. Disini saya bertanggungjawab untuk memperbaiki alat laboratorium yang rusak atau butuh perawatan. Setelah semua system mekanik telah bekerja dengan baik saya juga harus memastikan bahwa hasil baca dari alat telah akurat. Beberapa alat yang sering saya perbaiki yaitu Hematology Analyzer 3diff / 5diff, photometer, full auto kimia klinik.",
+      fp: [{
+        title: "Service Alat Kesehatan",
+        url: "https://www.facebook.com/profile.php?id=100095413114966"
+      },]
     },
   ];
 
@@ -58,13 +74,24 @@ const Projects = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
   };
 
+  // Auto sliding every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
   const getVisibleProjects = () => {
-    const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
-    const numVisible = screenWidth < 768 ? 1 : 3;
-    return projects.slice(currentIndex, currentIndex + numVisible).concat(
-      projects.slice(0, Math.max(0, currentIndex + numVisible - projects.length))
-    );
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 1 : 3;
+    const projectsToShow = [];
+    for (let i = 0; i < count; i++) {
+      projectsToShow.push(projects[(currentIndex + i) % projects.length]);
+    }
+    return projectsToShow;
   };
+
 
   const visibleProjects = getVisibleProjects();
 
@@ -106,10 +133,25 @@ const Projects = () => {
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-3xl w-full flex flex-col md:flex-row gap-6">
             <div className="flex-1">
               <img src={modalData.image} alt={modalData.title} className="w-full h-auto rounded-md object-cover" />
+              {modalData.fp && Array.isArray(modalData.fp) && modalData.fp.length > 0 && (
+                modalData.fp.map((link, idx) => (
+                  <a
+                    key={idx}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-700 transition mt-2 w-fit animate-pulse"
+                  >
+                    <img className="w-6 h-6" src="/assets/img/fb.png" alt="icon" />
+                    <span>{link.title}</span>
+                  </a>
+                ))
+              )}
             </div>
             <div className="flex-1">
               <h3 className="text-sm md:text-2xl font-bold mb-4 dark:text-white">{modalData.title}</h3>
               <p className="dark:text-gray-300 mb-6">{modalData.description}</p>
+
               <button
                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
                 onClick={closeModal}

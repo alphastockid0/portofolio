@@ -7,15 +7,15 @@ const Home = () => {
       className="min-h-screen bg-gray-100 dark:bg-gray-800 flex flex-col px-4 mt-12 justify-between"
       data-aos="fade-up"
     >
-      <div className="flex flex-col h-screen md:flex-row items-center justify-between py-6">
-        <div className="md:w-1/2 h-1/2 flex flex-col justify-between md:h-screen text-center md:text-left md:py-20">
+      <div className="flex flex-col h-screen md:flex-row items-center justify-between py-6 mb-5">
+        <div className="md:w-1/2 h-1/3 flex flex-col justify-between md:h-screen text-center md:text-left md:py-20">
           {/* TOP */}
-          <h1 className="dark:text-white font-seasons text-4xl md:text-7xl font-bold leading-tight">
+          <h1 className="dark:text-white font-seasons text-4xl md:text-7xl font-bold leading-tight mb-4">
             Explore My Projects & Professional Journey
           </h1>
 
           {/* BOTTOM */}
-          <div>
+          <div className="mt-5">
             <div className="overflow-hidden border-t border-b dark:border-white w-fit mx-auto md:mx-0 mb-4">
               <h3 className="font-seasons text-2xl md:text-4xl dark:text-white whitespace-nowrap overflow-hidden border-r-2 dark:border-white animate-typewriter">
                 Hi, I’m <span className="font-bold text-red-700">Wahyu Wijaya</span>
@@ -27,7 +27,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="md:w-1/2 h-1/2 flex flex-col items-center space-y-4 pt-2">
+        <div className="md:w-1/2 flex flex-col items-center space-y-4 pt-2">
           <img
             src="/assets/img/profile.jpg"
             alt="profile"
@@ -58,16 +58,6 @@ const Home = () => {
 
         </div>
       </div>
-
-      {/* Logo berada di bawah */}
-      {/* <div className="w-full flex justify-center flex-wrap gap-2 md:gap-10 mt-2 border-t py-2">
-        <img className="w-8 md:w-20 h-auto" src="/assets/img/php.png" alt="PHP" />
-        <img className="w-8 md:w-20 h-auto" src="/assets/img/sql.png" alt="SQL" />
-        <img className="w-8 md:w-20 h-auto" src="/assets/img/ci.png" alt="CI" />
-        <img className="w-16 md:w-44 h-auto" src="/assets/img/html.png" alt="HTML" />
-        <img className="w-16 md:w-44 h-auto" src="/assets/img/react.png" alt="React" />
-        <img className="w-10 md:w-20 h-auto" src="/assets/img/py.png" alt="Python" />
-      </div> */}
 
     </section>
 

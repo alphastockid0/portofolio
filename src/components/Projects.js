@@ -69,7 +69,7 @@ const Projects = () => {
   const visibleProjects = getVisibleProjects();
 
   return (
-    <section id="projects" className="min-h-screen bg-gray-100 dark:bg-gray-800 px-4 pt-10" data-aos="fade-up">
+    <section id="projects" className="min-h-screen flex flex-col justify-between bg-gray-100 dark:bg-gray-800 px-4 pt-10" data-aos="fade-up">
       <div className="max-w-4xl flex mt-10">
         <h2 className="font-seasons text-4xl md:text-7xl font-bold dark:text-white animate-blink">
           My Journey of Growth
@@ -88,7 +88,7 @@ const Projects = () => {
               className="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-md cursor-pointer hover:scale-105 transition-transform w-64"
               onClick={() => openModal(project)}
             >
-              <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+              <img src={project.image} alt={project.title} className="w-full h-60 object-cover" />
               <div className="p-4">
                 <h3 className="text-lg font-semibold dark:text-white text-center">{project.title}</h3>
               </div>
@@ -120,6 +120,17 @@ const Projects = () => {
           </div>
         </div>
       )}
+
+      {/* Logo berada di bawah */}
+      <div className="w-full flex justify-start flex-wrap gap-2 md:gap-10 mt-2 border-t py-2">
+        <h3 className="font-hoves dark:text-white md:text-4xl text-bold">Thanks to :</h3>
+        <img className="w-8 md:w-20 h-auto" src="/assets/img/php.png" alt="PHP" />
+        <img className="w-8 md:w-20 h-auto" src="/assets/img/sql.png" alt="SQL" />
+        <img className="w-8 md:w-20 h-auto" src="/assets/img/ci.png" alt="CI" />
+        <img className="w-16 md:w-44 h-auto" src="/assets/img/html.png" alt="HTML" />
+        <img className="w-16 md:w-44 h-auto" src="/assets/img/react.png" alt="React" />
+        <img className="w-10 md:w-20 h-auto" src="/assets/img/py.png" alt="Python" />
+      </div>
     </section>
   );
 };
